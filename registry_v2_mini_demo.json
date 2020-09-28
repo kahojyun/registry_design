@@ -187,8 +187,8 @@
                 "mixer": {
                     "skew": "mixer_XY1 - Phase skew",
                     "imbalance": "mixer_XY1 - Gain imbalance",
-                    "i_offset": "awg_XY - Data offset #1",
-                    "q_offset": "awg_XY - Data offset #2"
+                    "i_offset": "AWG_XY - Data offset #1",
+                    "q_offset": "AWG_XY - Data offset #2"
                 },
                 "LO": {
                     "frequency": "LO_XY - Frequency",
@@ -244,11 +244,11 @@
                 "1": {
                     "pulse": {
                         "frequency": [
-                            "mq - Readout frequency #1",
-                            "adc - Demod freq #1"
+                            "MQ - Readout frequency #1",
+                            "ADC - Demod freq #1"
                         ],
-                        "amplitude": "mq - Readout amplitude #1",
-                        "duration": "mq - Readout duration 1"
+                        "amplitude": "MQ - Readout amplitude #1",
+                        "duration": "MQ - Readout duration 1"
                     },
                     "demodulate": {
                         "integration": "ignore",
@@ -258,11 +258,11 @@
                 "2": {
                     "pulse": {
                         "frequency": [
-                            "mq - Readout frequency #2",
-                            "adc - Demod freq #2"
+                            "MQ - Readout frequency #2",
+                            "ADC - Demod freq #2"
                         ],
-                        "amplitude": "mq - Readout amplitude #2",
-                        "duration": "mq - Readout duration 1"
+                        "amplitude": "MQ - Readout amplitude #2",
+                        "duration": "MQ - Readout duration 1"
                     },
                     "demodulate": {
                         "integration": "ignore",
@@ -273,24 +273,24 @@
             "other": {
                 "drive_1": {
                     "pulse": {
-                        "type": "mq - Pulse type",
-                        "amplitude": "mq - Amplitude #1",
-                        "width": "mq - Width #1",
-                        "plateau": "mq - Plateau #1",
-                        "frequency": "mq - Frequency #1",
-                        "drag_scaling": "mq - DRAG scaling #1",
-                        "drag_detuning": "mq - DRAG frequency detuning #1"
+                        "type": "MQ - Pulse type",
+                        "amplitude": "MQ - Amplitude #1",
+                        "width": "MQ - Width #1",
+                        "plateau": "MQ - Plateau #1",
+                        "frequency": "MQ - Frequency #1",
+                        "drag_scaling": "MQ - DRAG scaling #1",
+                        "drag_detuning": "MQ - DRAG frequency detuning #1"
                     }
                 },
                 "drive_2": {
                     "pulse": {
-                        "type": "mq - Pulse type",
-                        "amplitude": "mq - Amplitude #2",
-                        "width": "mq - Width #2",
-                        "plateau": "mq - Plateau #2",
-                        "frequency": "mq - Frequency #2",
-                        "drag_scaling": "mq - DRAG scaling #2",
-                        "drag_detuning": "mq - DRAG frequency detuning #2"
+                        "type": "MQ - Pulse type",
+                        "amplitude": "MQ - Amplitude #2",
+                        "width": "MQ - Width #2",
+                        "plateau": "MQ - Plateau #2",
+                        "frequency": "MQ - Frequency #2",
+                        "drag_scaling": "MQ - DRAG scaling #2",
+                        "drag_detuning": "MQ - DRAG frequency detuning #2"
                     }
                 }
             }
