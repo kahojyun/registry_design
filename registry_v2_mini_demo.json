@@ -185,6 +185,8 @@
         "line": {
             "B11": {
                 "mixer": {
+                    "I": "AWG_XY - Waveform 1",
+                    "Q": "AWG_XY - Waveform 2",
                     "skew": "mixer_XY1 - Phase skew",
                     "imbalance": "mixer_XY1 - Gain imbalance",
                     "i_offset": "AWG_XY - Data offset #1",
@@ -200,6 +202,8 @@
             },
             "B22": {
                 "mixer": {
+                    "I": "AWG_XY - Waveform 3",
+                    "Q": "AWG_XY - Waveform 4",
                     "skew": "mixer_XY2 - Phase skew",
                     "imbalance": "mixer_XY2 - Gain imbalance",
                     "i_offset": "AWG_XY - Data offset #3",
@@ -210,6 +214,8 @@
             },
             "B1": {
                 "mixer": {
+                    "I": "AWG_RO - Waveform 1",
+                    "Q": "AWG_RO - Waveform 2",
                     "skew": "mixer_RO - Phase skew",
                     "imbalance": "mixer_RO - Gain imbalance",
                     "i_offset": "AWG_RO - Data offset #1",
