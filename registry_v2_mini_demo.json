@@ -1,0 +1,299 @@
+{
+    "values": {
+        "sequence": {
+            "trigger_device": "AWG_RO",
+            "sample_rate": 2e9,
+            "period": 100e-6,
+            "repeat": 5000,
+            "operation_space": 20e-9
+        },
+        "line": {
+            "B11": {
+                "mixer": {
+                    "LO": "LO",
+                    "I": "AWG - 1",
+                    "Q": "AWG - 2",
+                    "skew": 0,
+                    "imbalance": 0,
+                    "i_offset": 0,
+                    "q_offset": 0
+                },
+                "LO": {
+                    "device": "LO_XY",
+                    "frequency": 6.2e9,
+                    "power": 20
+                },
+                "AWG": {
+                    "device": "AWG_XY",
+                    "trigger_delay": 0
+                }
+            },
+            "B22": {
+                "mixer": {
+                    "LO": "LO",
+                    "I": "AWG - 3",
+                    "Q": "AWG - 4",
+                    "skew": 0,
+                    "imbalance": 0,
+                    "i_offset": 0,
+                    "q_offset": 0
+                },
+                "LO": "B11/LO",
+                "AWG": "B11/AWG"
+            },
+            "B1": {
+                "mixer": {
+                    "LO": "LO",
+                    "I": "AWG - 1",
+                    "Q": "AWG - 2",
+                    "skew": 0,
+                    "imbalance": 0,
+                    "i_offset": 0,
+                    "q_offset": 0
+                },
+                "LO": {
+                    "device":"LO_RO",
+                    "frequency": 4.9e9,
+                    "power": 17
+                },
+                "AWG": {
+                    "device": "AWG_RO",
+                    "trigger_delay": 45e-6
+                }
+            },
+            "HMET1": {
+                "mixer": {
+                    "LO": "LO",
+                    "I": "ADC - 1",
+                    "Q": "ADC - 2",
+                    "skew": 0,
+                    "imbalance": 0,
+                    "i_offset": 0,
+                    "q_offset": 0
+                },
+                "ADC": {
+                    "device": "ADC",
+                    "sample_depth": 3000,
+                    "window_start": 500,
+                    "window_width": 1000
+                }
+            }
+        },
+        "node": {
+            "qubit": {
+                "1": {
+                    "XY_line": "B11",
+                    "RO_in_line": "B1",
+                    "RO_out_line": "HMET1",
+                    "frequency": 6.5e9,
+                    "critical_amplitude": 0.7,
+                    "cavity": {
+                        "frequency": 5.1e9,
+                        "critical_amplitude": 0.5
+                    }
+                },
+                "2": {
+                    "XY_line": "B22",
+                    "RO_in_line": "B1",
+                    "RO_out_line": "HMET1",
+                    "frequency": 6.9e9,
+                    "critical_amplitude": 0.7,
+                    "cavity": {
+                        "frequency": 5.2e9,
+                        "critical_amplitude": 0.5
+                    }
+                }
+            },
+            "coupler": {
+                "1_2": {
+                    "Z_line": "B12",
+                    "frequency_max": 8.2e9,
+                    "bias_zero": 1.234
+                }
+            }
+        },
+        "operation": {
+            "pi": "ignore",
+            "CZ": "ignore",
+            "RO": {
+                "1": {
+                    "line": "node/qubit/1/RO_in_line",
+                    "pulse": {
+                        "type": "square",
+                        "frequency": 201.3e6,
+                        "amplitude": 50e-3,
+                        "duration": 5e-6
+                    },
+                    "demodulate": {
+                        "integration": "ignore",
+                        "discrimination": "ignore"
+                    }
+                },
+                "2": {
+                    "line": "node/qubit/2/RO_in_line",
+                    "pulse": {
+                        "type": "square",
+                        "frequency": 299.6e6,
+                        "amplitude": 50e-3,
+                        "duration": 5e-6
+                    },
+                    "demodulate": {
+                        "integration": "ignore",
+                        "discrimination": "ignore"
+                    }
+                }
+            },
+            "other": {
+                "drive_1": {
+                    "line": "node/qubit/1/XY_line",
+                    "pulse": {
+                        "type": "cosine",
+                        "amplitude": 10e-3,
+                        "width": 40e-9,
+                        "plateau": 40e-6,
+                        "frequency": 324.1e6,
+                        "drag_scale": 0,
+                        "drag_detune": 0
+                    }
+                },
+                "drive_2": {
+                    "line": "node/qubit/2/XY_line",
+                    "pulse": {
+                        "type": "cosine",
+                        "amplitude": 10e-3,
+                        "width": 40e-9,
+                        "plateau": 40e-6,
+                        "frequency": 711.2e6,
+                        "drag_scale": 0,
+                        "drag_detune": 0
+                    }
+                }
+            }
+        },
+        "crosstalk": "ignore"
+    },
+    "connection": {
+        "sequence": {
+            "sample_rate": "MQ - Sample rate",
+            "period": "AWG_RO - Trigger interval",
+            "repeat": [
+                "AWG_RO - Trigger count",
+                "ADC - Trigger count"
+            ],
+            "operation_space": "MQ - Pulse spacing"
+        },
+        "line": {
+            "B11": {
+                "mixer": {
+                    "skew": "mixer_XY1 - Phase skew",
+                    "imbalance": "mixer_XY1 - Gain imbalance",
+                    "i_offset": "awg_XY - Data offset #1",
+                    "q_offset": "awg_XY - Data offset #2"
+                },
+                "LO": {
+                    "frequency": "LO_XY - Frequency",
+                    "power": "LO_XY - Level"
+                },
+                "AWG": {
+                    "trigger_delay": "AWG_XY - Trigger delay"
+                }
+            },
+            "B22": {
+                "mixer": {
+                    "skew": "mixer_XY2 - Phase skew",
+                    "imbalance": "mixer_XY2 - Gain imbalance",
+                    "i_offset": "AWG_XY - Data offset #3",
+                    "q_offset": "AWG_XY - Data offset #4"
+                },
+                "LO": "ignore",
+                "AWG": "ignore"
+            },
+            "B1": {
+                "mixer": {
+                    "skew": "mixer_RO - Phase skew",
+                    "imbalance": "mixer_RO - Gain imbalance",
+                    "i_offset": "AWG_RO - Data offset #1",
+                    "q_offset": "AWG_RO - Data offset #2"
+                },
+                "LO": {
+                    "frequency": "LO_RO - Frequency",
+                    "power": "LO_RO - Level"
+                },
+                "AWG": {
+                    "trigger_delay": "AWG_RO - Trigger delay"
+                }
+            },
+            "HMET1": {
+                "mixer": {
+                    "skew": "ignore",
+                    "imbalance": "ignore",
+                    "i_offset": "ignore",
+                    "q_offset": "ignore"
+                },
+                "ADC": {
+                    "sample_depth": "ADC - Sample depth",
+                    "window_start": "ADC - Window start",
+                    "window_width": "ADC - Window width"
+                }
+            }
+        },
+        "operation": {
+            "pi": "ignore",
+            "CZ": "ignore",
+            "RO": {
+                "1": {
+                    "pulse": {
+                        "frequency": [
+                            "mq - Readout frequency #1",
+                            "adc - Demod freq #1"
+                        ],
+                        "amplitude": "mq - Readout amplitude #1",
+                        "duration": "mq - Readout duration 1"
+                    },
+                    "demodulate": {
+                        "integration": "ignore",
+                        "discrimination": "ignore"
+                    }
+                },
+                "2": {
+                    "pulse": {
+                        "frequency": [
+                            "mq - Readout frequency #2",
+                            "adc - Demod freq #2"
+                        ],
+                        "amplitude": "mq - Readout amplitude #2",
+                        "duration": "mq - Readout duration 1"
+                    },
+                    "demodulate": {
+                        "integration": "ignore",
+                        "discrimination": "ignore"
+                    }
+                }
+            },
+            "other": {
+                "drive_1": {
+                    "pulse": {
+                        "type": "mq - Pulse type",
+                        "amplitude": "mq - Amplitude #1",
+                        "width": "mq - Width #1",
+                        "plateau": "mq - Plateau #1",
+                        "frequency": "mq - Frequency #1",
+                        "drag_scaling": "mq - DRAG scaling #1",
+                        "drag_detuning": "mq - DRAG frequency detuning #1"
+                    }
+                },
+                "drive_2": {
+                    "pulse": {
+                        "type": "mq - Pulse type",
+                        "amplitude": "mq - Amplitude #2",
+                        "width": "mq - Width #2",
+                        "plateau": "mq - Plateau #2",
+                        "frequency": "mq - Frequency #2",
+                        "drag_scaling": "mq - DRAG scaling #2",
+                        "drag_detuning": "mq - DRAG frequency detuning #2"
+                    }
+                }
+            }
+        }
+    }
+}
