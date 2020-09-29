@@ -85,6 +85,7 @@
                     "XY_line": "B11",
                     "RO_in_line": "B1",
                     "RO_out_line": "HMET1",
+                    "ADC_channel": "1",
                     "frequency": 6.5e9,
                     "critical_amplitude": 0.7,
                     "cavity": {
@@ -96,6 +97,7 @@
                     "XY_line": "B22",
                     "RO_in_line": "B1",
                     "RO_out_line": "HMET1",
+                    "ADC_channel": "2",
                     "frequency": 6.9e9,
                     "critical_amplitude": 0.7,
                     "cavity": {
